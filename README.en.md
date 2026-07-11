@@ -39,6 +39,9 @@ var player *model.Player
 
 API response types are defined in the `model` package.
 
+Response model JSON tags do not use `omitempty`, so values explicitly returned by the API, including `0`, `false`, and empty strings, are preserved when the model is marshaled back to JSON.   
+Values whose presence is meaningful use pointers. For example, a nil `Item.ElixirCost` means the API response did not contain an elixir cost; otherwise, the pointed-to value is the cost.
+
 ## Search and Pagination
 
 ```go

@@ -4,23 +4,23 @@ type ClanMemberList []ClanMember
 
 // ClanMemberPage is a paginated clan member response.
 type ClanMemberPage struct {
-	Items  ClanMemberList `json:"items,omitempty"`
-	Paging Paging         `json:"paging,omitempty"`
+	Items  ClanMemberList `json:"items"`
+	Paging Paging         `json:"paging"`
 }
 
 type ClanMember struct {
-	Arena             Arena          `json:"arena,omitempty"`
-	ClanChestPoints   int            `json:"clanChestPoints,omitempty"`
-	LastSeen          string         `json:"lastSeen,omitempty"`
-	Tag               string         `json:"tag,omitempty"`
-	Name              string         `json:"name,omitempty"`
-	Role              ClanMemberRole `json:"role,omitempty"`
-	ExpLevel          int            `json:"expLevel,omitempty"`
-	Trophies          int            `json:"trophies,omitempty"`
-	ClanRank          int            `json:"clanRank,omitempty"`
-	PreviousClanRank  int            `json:"previousClanRank,omitempty"`
-	Donations         int            `json:"donations,omitempty"`
-	DonationsReceived int            `json:"donationsReceived,omitempty"`
+	Arena             Arena          `json:"arena"`
+	ClanChestPoints   int            `json:"clanChestPoints"`
+	LastSeen          string         `json:"lastSeen"`
+	Tag               string         `json:"tag"`
+	Name              string         `json:"name"`
+	Role              ClanMemberRole `json:"role"`
+	ExpLevel          int            `json:"expLevel"`
+	Trophies          int            `json:"trophies"`
+	ClanRank          int            `json:"clanRank"`
+	PreviousClanRank  int            `json:"previousClanRank"`
+	Donations         int            `json:"donations"`
+	DonationsReceived int            `json:"donationsReceived"`
 }
 
 type ClanMemberRole string
@@ -34,23 +34,23 @@ const (
 )
 
 type Clan struct {
-	MemberList        ClanMemberList      `json:"memberList,omitempty"`
-	Tag               string              `json:"tag,omitempty"`
-	ClanChestStatus   ClanClanChestStatus `json:"clanChestStatus,omitempty"`
-	ClanChestLevel    int                 `json:"clanChestLevel,omitempty"`
-	ClanChestMaxLevel int                 `json:"clanChestMaxLevel,omitempty"`
-	ClanScore         int                 `json:"clanScore,omitempty"`
-	ClanWarTrophies   int                 `json:"clanWarTrophies,omitempty"`
-	RequiredTrophies  int                 `json:"requiredTrophies,omitempty"`
-	DonationsPerWeek  int                 `json:"donationsPerWeek,omitempty"`
-	BadgeId           int                 `json:"badgeId,omitempty"`
-	Name              string              `json:"name,omitempty"`
-	Location          Location            `json:"location,omitempty"`
-	Type              ClanType            `json:"type,omitempty"`
-	Members           int                 `json:"members,omitempty"`
-	Description       string              `json:"description,omitempty"`
-	ClanChestPoints   int                 `json:"clanChestPoints,omitempty"`
-	BadgeUrls         map[string]any      `json:"badgeUrls,omitempty"`
+	MemberList        ClanMemberList      `json:"memberList"`
+	Tag               string              `json:"tag"`
+	ClanChestStatus   ClanClanChestStatus `json:"clanChestStatus"`
+	ClanChestLevel    int                 `json:"clanChestLevel"`
+	ClanChestMaxLevel int                 `json:"clanChestMaxLevel"`
+	ClanScore         int                 `json:"clanScore"`
+	ClanWarTrophies   int                 `json:"clanWarTrophies"`
+	RequiredTrophies  int                 `json:"requiredTrophies"`
+	DonationsPerWeek  int                 `json:"donationsPerWeek"`
+	BadgeId           int                 `json:"badgeId"`
+	Name              string              `json:"name"`
+	Location          Location            `json:"location"`
+	Type              ClanType            `json:"type"`
+	Members           int                 `json:"members"`
+	Description       string              `json:"description"`
+	ClanChestPoints   int                 `json:"clanChestPoints"`
+	BadgeUrls         map[string]any      `json:"badgeUrls"`
 }
 
 type ClanClanChestStatus string
@@ -71,12 +71,12 @@ const (
 )
 
 type CurrentClanWar struct {
-	State             CurrentClanWarState    `json:"state,omitempty"`
-	Clan              ClanWarClan            `json:"clan,omitempty"`
-	Participants      ClanWarParticipantList `json:"participants,omitempty"`
-	Clans             ClanWarClanList        `json:"clans,omitempty"`
-	CollectionEndTime string                 `json:"collectionEndTime,omitempty"`
-	WarEndTime        string                 `json:"warEndTime,omitempty"`
+	State             CurrentClanWarState    `json:"state"`
+	Clan              ClanWarClan            `json:"clan"`
+	Participants      ClanWarParticipantList `json:"participants"`
+	Clans             ClanWarClanList        `json:"clans"`
+	CollectionEndTime string                 `json:"collectionEndTime"`
+	WarEndTime        string                 `json:"warEndTime"`
 }
 
 type CurrentClanWarState string
@@ -94,46 +94,46 @@ const (
 type ClanWarClanList []ClanWarClan
 
 type ClanWarClan struct {
-	Tag           string `json:"tag,omitempty"`
-	ClanScore     int    `json:"clanScore,omitempty"`
-	Crowns        int    `json:"crowns,omitempty"`
-	BadgeId       int    `json:"badgeId,omitempty"`
-	Name          string `json:"name,omitempty"`
-	Participants  int    `json:"participants,omitempty"`
-	BattlesPlayed int    `json:"battlesPlayed,omitempty"`
-	Wins          int    `json:"wins,omitempty"`
+	Tag           string `json:"tag"`
+	ClanScore     int    `json:"clanScore"`
+	Crowns        int    `json:"crowns"`
+	BadgeId       int    `json:"badgeId"`
+	Name          string `json:"name"`
+	Participants  int    `json:"participants"`
+	BattlesPlayed int    `json:"battlesPlayed"`
+	Wins          int    `json:"wins"`
 }
 
 type ClanWarParticipantList []ClanWarParticipant
 
 type ClanWarParticipant struct {
-	Tag                        string `json:"tag,omitempty"`
-	Name                       string `json:"name,omitempty"`
-	CardsEarned                int    `json:"cardsEarned,omitempty"`
-	BattlesPlayed              int    `json:"battlesPlayed,omitempty"`
-	Wins                       int    `json:"wins,omitempty"`
-	CollectionDayBattlesPlayed int    `json:"collectionDayBattlesPlayed,omitempty"`
-	NumberOfBattles            int    `json:"numberOfBattles,omitempty"`
+	Tag                        string `json:"tag"`
+	Name                       string `json:"name"`
+	CardsEarned                int    `json:"cardsEarned"`
+	BattlesPlayed              int    `json:"battlesPlayed"`
+	Wins                       int    `json:"wins"`
+	CollectionDayBattlesPlayed int    `json:"collectionDayBattlesPlayed"`
+	NumberOfBattles            int    `json:"numberOfBattles"`
 }
 
 // ClanList is a paginated clan search response.
 type ClanList struct {
-	Items  []Clan `json:"items,omitempty"`
-	Paging Paging `json:"paging,omitempty"`
+	Items  []Clan `json:"items"`
+	Paging Paging `json:"paging"`
 }
 
 type ClanWarLog []ClanWarLogEntry
 
 type ClanWarLogEntry struct {
-	Standings    ClanWarStandingList    `json:"standings,omitempty"`
-	SeasonId     int                    `json:"seasonId,omitempty"`
-	Participants ClanWarParticipantList `json:"participants,omitempty"`
-	CreatedDate  string                 `json:"createdDate,omitempty"`
+	Standings    ClanWarStandingList    `json:"standings"`
+	SeasonId     int                    `json:"seasonId"`
+	Participants ClanWarParticipantList `json:"participants"`
+	CreatedDate  string                 `json:"createdDate"`
 }
 
 type ClanWarStandingList []ClanWarStanding
 
 type ClanWarStanding struct {
-	TrophyChange int         `json:"trophyChange,omitempty"`
-	Clan         ClanWarClan `json:"clan,omitempty"`
+	TrophyChange int         `json:"trophyChange"`
+	Clan         ClanWarClan `json:"clan"`
 }

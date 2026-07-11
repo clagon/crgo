@@ -1,22 +1,22 @@
 package model
 
 type Version struct {
-	Build   int `json:"build,omitempty"`
-	Major   int `json:"major,omitempty"`
-	Content int `json:"content,omitempty"`
+	Build   int `json:"build"`
+	Major   int `json:"major"`
+	Content int `json:"content"`
 }
 
 type JsonNode map[string]any
 
 // Paging contains cursors for a paginated API response.
 type Paging struct {
-	Cursors PagingCursors `json:"cursors,omitempty"`
+	Cursors PagingCursors `json:"cursors"`
 }
 
 // PagingCursors contains cursors before and after the current page.
 type PagingCursors struct {
-	After  string `json:"after,omitempty"`
-	Before string `json:"before,omitempty"`
+	After  string `json:"after"`
+	Before string `json:"before"`
 }
 
 // List represents the untyped list referenced by Fingerprint.files in the
@@ -24,9 +24,9 @@ type PagingCursors struct {
 type List []any
 
 type Fingerprint struct {
-	Sha     string `json:"sha,omitempty"`
-	Version string `json:"version,omitempty"`
-	Files   List   `json:"files,omitempty"`
+	Sha     string `json:"sha"`
+	Version string `json:"version"`
+	Files   List   `json:"files"`
 }
 
 // Objectとして定義されているが、実際にはstringで返却される
@@ -34,15 +34,15 @@ type Fingerprint struct {
 type JsonLocalizedName string
 
 type Arena struct {
-	Name     JsonLocalizedName `json:"name,omitempty"`
-	Id       int               `json:"id,omitempty"`
-	RawName  string            `json:"rawName,omitempty"`
-	IconUrls map[string]any    `json:"iconUrls,omitempty"`
+	Name     JsonLocalizedName `json:"name"`
+	Id       int               `json:"id"`
+	RawName  string            `json:"rawName"`
+	IconUrls map[string]any    `json:"iconUrls"`
 }
 
 type GameMode struct {
-	Id   int    `json:"id,omitempty"`
-	Name string `json:"name,omitempty"`
+	Id   int    `json:"id"`
+	Name string `json:"name"`
 }
 
 type VerifyTokenRequest struct {
@@ -50,9 +50,9 @@ type VerifyTokenRequest struct {
 }
 
 type VerifyTokenResponse struct {
-	Tag    string `json:"tag,omitempty"`
-	Token  string `json:"token,omitempty"`
-	Status string `json:"status,omitempty"`
+	Tag    string `json:"tag"`
+	Token  string `json:"token"`
+	Status string `json:"status"`
 }
 
 type StringList []string
@@ -68,14 +68,14 @@ type Float float64
 type TrailEventList []TrailEvent
 
 type TrailEvent struct {
-	Title       JsonLocalizedName `json:"title,omitempty"`
-	Description JsonLocalizedName `json:"description,omitempty"`
-	EventTag    string            `json:"eventTag,omitempty"`
+	Title       JsonLocalizedName `json:"title"`
+	Description JsonLocalizedName `json:"description"`
+	EventTag    string            `json:"eventTag"`
 }
 
 type ClientError struct {
-	Reason  string         `json:"reason,omitempty"`
-	Message string         `json:"message,omitempty"`
-	Type    string         `json:"type,omitempty"`
-	Detail  map[string]any `json:"detail,omitempty"`
+	Reason  string         `json:"reason"`
+	Message string         `json:"message"`
+	Type    string         `json:"type"`
+	Detail  map[string]any `json:"detail"`
 }
