@@ -16,6 +16,12 @@ type ClientOption = client.ClientOption
 // PaginationOptions contains cursor pagination parameters.
 type PaginationOptions = client.PaginationOptions
 
+// SearchClansOptions contains clan search and pagination parameters.
+type SearchClansOptions = client.SearchClansOptions
+
+// SearchTournamentsOptions contains tournament search and pagination parameters.
+type SearchTournamentsOptions = client.SearchTournamentsOptions
+
 // APIError represents a non-2xx response from the Clash Royale API.
 type APIError = client.APIError
 
