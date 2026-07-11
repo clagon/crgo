@@ -1,0 +1,6 @@
+{
+  "tag": "#ABC123",
+  "name": "Example",
+  "expLevel": 42,
+  "clan": {"tag": "#CLAN", "name": "Example Clan"}
+}

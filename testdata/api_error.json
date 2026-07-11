@@ -1,0 +1,5 @@
+{
+  "reason": "accessDenied",
+  "message": "Invalid authorization",
+  "type": "client"
+}
