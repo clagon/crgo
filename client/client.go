@@ -1,4 +1,4 @@
-package crgo
+package client
 
 import (
 	"errors"
