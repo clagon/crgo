@@ -18,7 +18,9 @@ type Fingerprint struct {
 	Files   List   `json:"files,omitempty"`
 }
 
-type JsonLocalizedName map[string]any
+// Objectとして定義されているが、実際にはstringで返却される
+// type JsonLocalizedName map[string]any
+type JsonLocalizedName string
 
 type Arena struct {
 	Name     JsonLocalizedName `json:"name,omitempty"`
