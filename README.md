@@ -81,4 +81,12 @@ go test ./...
 go vet ./...
 ```
 
+実APIへ接続するintegration testは、通常のテストやCIでは実行されません。実行する場合は、有効なAPIトークンを設定して `integration` ビルドタグを指定します。
+
+```sh
+CLASH_ROYALE_API_TOKEN=... go test -tags=integration ./...
+```
+
+integration testはClash Royale公式APIの `/cards` を呼び出します。トークンが未設定の場合は設定漏れとしてテストが失敗します。トークンはリポジトリやテストfixtureへ保存しません。
+
 API仕様の基準はリポジトリ直下の `swagger.json` です。

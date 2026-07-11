@@ -6,12 +6,23 @@ import (
 )
 
 func TestJsonLocalizedNameDecodesString(t *testing.T) {
-	var arena Arena
-	if err := json.Unmarshal([]byte(`{"name":"Arena 17"}`), &arena); err != nil {
-		t.Fatal(err)
+	tests := []struct {
+		name     string
+		body     string
+		wantName JsonLocalizedName
+	}{
+		{name: "string_name", body: `{"name":"Arena 17"}`, wantName: "Arena 17"},
 	}
 
-	if arena.Name != "Arena 17" {
-		t.Fatalf("unexpected arena name: %q", arena.Name)
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			var arena Arena
+			if err := json.Unmarshal([]byte(tt.body), &arena); err != nil {
+				t.Fatal(err)
+			}
+			if arena.Name != tt.wantName {
+				t.Fatalf("arena name: got %q, want %q", arena.Name, tt.wantName)
+			}
+		})
 	}
 }

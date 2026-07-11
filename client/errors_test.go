@@ -12,10 +12,22 @@ import (
 )
 
 func TestAPIError(t *testing.T) {
-	for _, status := range []int{400, 403, 404, 429, 500, 503} {
-		t.Run(http.StatusText(status), func(t *testing.T) {
+	tests := []struct {
+		name   string
+		status int
+	}{
+		{name: "bad_request", status: http.StatusBadRequest},
+		{name: "forbidden", status: http.StatusForbidden},
+		{name: "not_found", status: http.StatusNotFound},
+		{name: "too_many_requests", status: http.StatusTooManyRequests},
+		{name: "internal_server_error", status: http.StatusInternalServerError},
+		{name: "service_unavailable", status: http.StatusServiceUnavailable},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
 			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
-				w.WriteHeader(status)
+				w.WriteHeader(tt.status)
 				_, _ = w.Write([]byte(`{"reason":"accessDenied","message":"no access","type":"client","detail":{"key":"value"}}`))
 			}))
 			defer server.Close()
@@ -25,7 +37,7 @@ func TestAPIError(t *testing.T) {
 			if !errors.As(err, &apiErr) {
 				t.Fatalf("expected APIError, got %v", err)
 			}
-			if apiErr.StatusCode != status || apiErr.Message != "no access" || len(apiErr.Body) == 0 {
+			if apiErr.StatusCode != tt.status || apiErr.Message != "no access" || len(apiErr.Body) == 0 {
 				t.Fatalf("unexpected APIError: %+v", apiErr)
 			}
 		})
@@ -33,37 +45,88 @@ func TestAPIError(t *testing.T) {
 }
 
 func TestAPIErrorFixture(t *testing.T) {
-	body, err := os.ReadFile("testdata/api_error.json")
-	if err != nil {
-		t.Fatal(err)
+	tests := []struct {
+		name       string
+		file       string
+		wantReason string
+	}{
+		{name: "access_denied", file: "testdata/api_error.json", wantReason: "accessDenied"},
 	}
-	apiErr := &APIError{StatusCode: http.StatusForbidden, Body: body}
-	if err := json.Unmarshal(body, apiErr); err != nil {
-		t.Fatal(err)
-	}
-	if apiErr.Reason != "accessDenied" {
-		t.Fatalf("unexpected APIError: %+v", apiErr)
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			body, err := os.ReadFile(tt.file)
+			if err != nil {
+				t.Fatal(err)
+			}
+			apiErr := &APIError{StatusCode: http.StatusForbidden, Body: body}
+			if err := json.Unmarshal(body, apiErr); err != nil {
+				t.Fatal(err)
+			}
+			if apiErr.Reason != tt.wantReason {
+				t.Fatalf("reason: got %q, want %q", apiErr.Reason, tt.wantReason)
+			}
+		})
 	}
 }
 
 func TestNonJSONErrorAndInvalidSuccessJSON(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if strings.Contains(r.URL.Path, "cards") {
-			w.WriteHeader(502)
-			_, _ = w.Write([]byte("bad gateway"))
-			return
-		}
-		_, _ = w.Write([]byte(`{`))
-	}))
-	defer server.Close()
-	c, _ := NewClient("secret", WithBaseURL(server.URL))
-	_, err := c.GetCards(context.Background(), nil)
-	var apiErr *APIError
-	if !errors.As(err, &apiErr) || string(apiErr.Body) != "bad gateway" {
-		t.Fatalf("unexpected error: %v", err)
+	tests := []struct {
+		name         string
+		status       int
+		body         string
+		call         func(context.Context, *Client) error
+		wantAPIError bool
+		wantContains string
+	}{
+		{
+			name:   "non_json_error",
+			status: http.StatusBadGateway,
+			body:   "bad gateway",
+			call: func(ctx context.Context, client *Client) error {
+				_, err := client.GetCards(ctx, nil)
+				return err
+			},
+			wantAPIError: true,
+		},
+		{
+			name: "invalid_json",
+			body: `{`,
+			call: func(ctx context.Context, client *Client) error {
+				_, err := client.GetPlayer(ctx, "tag")
+				return err
+			},
+			wantContains: "decode response",
+		},
 	}
-	_, err = c.GetPlayer(context.Background(), "tag")
-	if err == nil || !strings.Contains(err.Error(), "decode response") {
-		t.Fatalf("unexpected decode error: %v", err)
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+				if tt.status != 0 {
+					w.WriteHeader(tt.status)
+				}
+				_, _ = w.Write([]byte(tt.body))
+			}))
+			defer server.Close()
+			client, err := NewClient("secret", WithBaseURL(server.URL))
+			if err != nil {
+				t.Fatal(err)
+			}
+			err = tt.call(context.Background(), client)
+			if err == nil {
+				t.Fatalf("unexpected error: %v", err)
+			}
+			if tt.wantContains != "" && !strings.Contains(err.Error(), tt.wantContains) {
+				t.Fatalf("error: got %q, want substring %q", err, tt.wantContains)
+			}
+			if !tt.wantAPIError {
+				return
+			}
+			var apiErr *APIError
+			if !errors.As(err, &apiErr) || string(apiErr.Body) != tt.body {
+				t.Fatalf("unexpected APIError: %v", err)
+			}
+		})
 	}
 }
