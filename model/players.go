@@ -1,4 +1,4 @@
-package crgo
+package model
 
 type PlayerClan struct {
 	BadgeId   int            `json:"badgeId,omitempty"`

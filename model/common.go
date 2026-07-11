@@ -1,4 +1,4 @@
-package crgo
+package model
 
 type Version struct {
 	Build   int `json:"build,omitempty"`

@@ -2,6 +2,8 @@ package crgo
 
 import (
 	"context"
+
+	model "github.com/clagon/crgo/model"
 )
 
 /*
@@ -14,10 +16,10 @@ GetGlobalTournaments
 		グローバル大会一覧
 		error
 */
-func (c *Client) GetGlobalTournaments(ctx context.Context) (*LadderTournamentList, error) {
+func (c *Client) GetGlobalTournaments(ctx context.Context) (*model.LadderTournamentList, error) {
 
 	// レスポンス用構造体
-	var result LadderTournamentList
+	var result model.LadderTournamentList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/globaltournaments", nil, &result); err != nil {

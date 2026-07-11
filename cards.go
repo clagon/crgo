@@ -3,6 +3,8 @@ package crgo
 import (
 	"context"
 	"net/url"
+
+	model "github.com/clagon/crgo/model"
 )
 
 /*
@@ -16,7 +18,7 @@ GetCards
 		カード一覧
 		error
 */
-func (c *Client) GetCards(ctx context.Context, options *PaginationOptions) (*Items, error) {
+func (c *Client) GetCards(ctx context.Context, options *PaginationOptions) (*model.Items, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -28,7 +30,7 @@ func (c *Client) GetCards(ctx context.Context, options *PaginationOptions) (*Ite
 	}
 
 	// レスポンス用構造体
-	var result Items
+	var result model.Items
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/cards", query, &result); err != nil {

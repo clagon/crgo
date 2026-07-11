@@ -1,4 +1,4 @@
-package crgo
+package model
 
 type PlayerPathOfLegendRankingList []PlayerPathOfLegendRanking
 

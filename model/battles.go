@@ -1,4 +1,4 @@
-package crgo
+package model
 
 type Replay struct {
 	ReplayInfo string   `json:"replayInfo,omitempty"`

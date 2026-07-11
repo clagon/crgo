@@ -3,6 +3,8 @@ package crgo
 import (
 	"context"
 	"net/url"
+
+	model "github.com/clagon/crgo/model"
 )
 
 /*
@@ -17,7 +19,7 @@ GetClanRanking
 		クランランキング
 		error
 */
-func (c *Client) GetClanRanking(ctx context.Context, locationId string, options *PaginationOptions) (*ClanRankingList, error) {
+func (c *Client) GetClanRanking(ctx context.Context, locationId string, options *PaginationOptions) (*model.ClanRankingList, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -29,7 +31,7 @@ func (c *Client) GetClanRanking(ctx context.Context, locationId string, options 
 	}
 
 	// レスポンス用構造体
-	var result ClanRankingList
+	var result model.ClanRankingList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/locations/"+escapedPath(locationId)+"/rankings/clans", query, &result); err != nil {
@@ -51,7 +53,7 @@ GetPlayerRanking
 		プレイヤーランキング
 		error
 */
-func (c *Client) GetPlayerRanking(ctx context.Context, locationId string, options *PaginationOptions) (*PlayerRankingList, error) {
+func (c *Client) GetPlayerRanking(ctx context.Context, locationId string, options *PaginationOptions) (*model.PlayerRankingList, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -63,7 +65,7 @@ func (c *Client) GetPlayerRanking(ctx context.Context, locationId string, option
 	}
 
 	// レスポンス用構造体
-	var result PlayerRankingList
+	var result model.PlayerRankingList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/locations/"+escapedPath(locationId)+"/rankings/players", query, &result); err != nil {
@@ -85,7 +87,7 @@ GetClanWarsRanking
 		クラン対戦ランキング
 		error
 */
-func (c *Client) GetClanWarsRanking(ctx context.Context, locationId string, options *PaginationOptions) (*ClanRankingList, error) {
+func (c *Client) GetClanWarsRanking(ctx context.Context, locationId string, options *PaginationOptions) (*model.ClanRankingList, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -97,7 +99,7 @@ func (c *Client) GetClanWarsRanking(ctx context.Context, locationId string, opti
 	}
 
 	// レスポンス用構造体
-	var result ClanRankingList
+	var result model.ClanRankingList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/locations/"+escapedPath(locationId)+"/rankings/clanwars", query, &result); err != nil {
@@ -119,7 +121,7 @@ GetTopPlayerPathOfLegendSeasonRankings
 		PoLランキング
 		error
 */
-func (c *Client) GetTopPlayerPathOfLegendSeasonRankings(ctx context.Context, seasonId string, options *PaginationOptions) (*PlayerPathOfLegendRankingList, error) {
+func (c *Client) GetTopPlayerPathOfLegendSeasonRankings(ctx context.Context, seasonId string, options *PaginationOptions) (*model.PlayerPathOfLegendRankingList, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -131,7 +133,7 @@ func (c *Client) GetTopPlayerPathOfLegendSeasonRankings(ctx context.Context, sea
 	}
 
 	// レスポンス用構造体
-	var result PlayerPathOfLegendRankingList
+	var result model.PlayerPathOfLegendRankingList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/locations/global/pathoflegend/"+escapedPath(seasonId)+"/rankings/players", query, &result); err != nil {
@@ -152,10 +154,10 @@ GetTopPlayerLeagueSeason
 		リーグシーズン情報
 		error
 */
-func (c *Client) GetTopPlayerLeagueSeason(ctx context.Context, seasonId string) (*LeagueSeason, error) {
+func (c *Client) GetTopPlayerLeagueSeason(ctx context.Context, seasonId string) (*model.LeagueSeason, error) {
 
 	// レスポンス用構造体
-	var result LeagueSeason
+	var result model.LeagueSeason
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/locations/global/seasons/"+escapedPath(seasonId), nil, &result); err != nil {
@@ -177,7 +179,7 @@ GetTopPlayerLeagueSeasonRankings
 		プレイヤーランキング
 		error
 */
-func (c *Client) GetTopPlayerLeagueSeasonRankings(ctx context.Context, seasonId string, options *PaginationOptions) (*PlayerRankingList, error) {
+func (c *Client) GetTopPlayerLeagueSeasonRankings(ctx context.Context, seasonId string, options *PaginationOptions) (*model.PlayerRankingList, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -189,7 +191,7 @@ func (c *Client) GetTopPlayerLeagueSeasonRankings(ctx context.Context, seasonId 
 	}
 
 	// レスポンス用構造体
-	var result PlayerRankingList
+	var result model.PlayerRankingList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/locations/global/seasons/"+escapedPath(seasonId)+"/rankings/players", query, &result); err != nil {
@@ -209,10 +211,10 @@ ListTopPlayerLeagueSeasons
 		リーグシーズン一覧
 		error
 */
-func (c *Client) ListTopPlayerLeagueSeasons(ctx context.Context) (*LeagueSeasonList, error) {
+func (c *Client) ListTopPlayerLeagueSeasons(ctx context.Context) (*model.LeagueSeasonList, error) {
 
 	// レスポンス用構造体
-	var result LeagueSeasonList
+	var result model.LeagueSeasonList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/locations/global/seasons", nil, &result); err != nil {
@@ -233,7 +235,7 @@ GetLocations
 		ロケーション一覧
 		error
 */
-func (c *Client) GetLocations(ctx context.Context, options *PaginationOptions) (*LocationList, error) {
+func (c *Client) GetLocations(ctx context.Context, options *PaginationOptions) (*model.LocationList, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -245,7 +247,7 @@ func (c *Client) GetLocations(ctx context.Context, options *PaginationOptions) (
 	}
 
 	// レスポンス用構造体
-	var result LocationList
+	var result model.LocationList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/locations", query, &result); err != nil {
@@ -265,10 +267,10 @@ ListTopPlayerLeagueSeasonsV2
 		リーグシーズン一覧
 		error
 */
-func (c *Client) ListTopPlayerLeagueSeasonsV2(ctx context.Context) (*LeagueSeasonList, error) {
+func (c *Client) ListTopPlayerLeagueSeasonsV2(ctx context.Context) (*model.LeagueSeasonList, error) {
 
 	// レスポンス用構造体
-	var result LeagueSeasonList
+	var result model.LeagueSeasonList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/locations/global/seasonsV2", nil, &result); err != nil {
@@ -289,10 +291,10 @@ GetLocation
 		ロケーション情報
 		error
 */
-func (c *Client) GetLocation(ctx context.Context, locationId string) (*Location, error) {
+func (c *Client) GetLocation(ctx context.Context, locationId string) (*model.Location, error) {
 
 	// レスポンス用構造体
-	var result Location
+	var result model.Location
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/locations/"+escapedPath(locationId), nil, &result); err != nil {
@@ -314,7 +316,7 @@ GetGlobalTournamentRanking
 		トーナメントランキング
 		error
 */
-func (c *Client) GetGlobalTournamentRanking(ctx context.Context, tournamentTag string, options *PaginationOptions) (*LadderTournamentRankingList, error) {
+func (c *Client) GetGlobalTournamentRanking(ctx context.Context, tournamentTag string, options *PaginationOptions) (*model.LadderTournamentRankingList, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -326,7 +328,7 @@ func (c *Client) GetGlobalTournamentRanking(ctx context.Context, tournamentTag s
 	}
 
 	// レスポンス用構造体
-	var result LadderTournamentRankingList
+	var result model.LadderTournamentRankingList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/locations/global/rankings/tournaments/"+escapedPath(tournamentTag), query, &result); err != nil {
@@ -348,7 +350,7 @@ GetPlayerPathOfLegendRanking
 		PoLのランキング
 		error
 */
-func (c *Client) GetPlayerPathOfLegendRanking(ctx context.Context, locationId string, options *PaginationOptions) (*PlayerPathOfLegendRankingList, error) {
+func (c *Client) GetPlayerPathOfLegendRanking(ctx context.Context, locationId string, options *PaginationOptions) (*model.PlayerPathOfLegendRankingList, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -360,7 +362,7 @@ func (c *Client) GetPlayerPathOfLegendRanking(ctx context.Context, locationId st
 	}
 
 	// レスポンス用構造体
-	var result PlayerPathOfLegendRankingList
+	var result model.PlayerPathOfLegendRankingList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/locations/"+escapedPath(locationId)+"/pathoflegend/players", query, &result); err != nil {

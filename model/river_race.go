@@ -1,4 +1,4 @@
-package crgo
+package model
 
 type CurrentRiverRace struct {
 	State             CurrentRiverRaceState      `json:"state,omitempty"`

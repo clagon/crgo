@@ -1,4 +1,4 @@
-package crgo
+package model
 
 type Item struct {
 	IconUrls          map[string]any    `json:"iconUrls,omitempty"`
