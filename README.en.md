@@ -1,16 +1,16 @@
 # crgo
 
-日本語 | [English](README.en.md)
+[日本語](README.md) | English
 
-Clash Royale APIのGoクライアントです。
+A Go client for the Clash Royale API.
 
-## インストール
+## Installation
 
 ```sh
 go get github.com/clagon/crgo
 ```
 
-## 基本的な使い方
+## Basic Usage
 
 ```go
 client, err := crgo.NewClient(os.Getenv("CLASH_ROYALE_API_TOKEN"))
@@ -26,10 +26,10 @@ fmt.Println(player.Name)
 ```
 
 > [!NOTE]
-> APIトークンはClashRoyaleAPIから取得する必要があります。  
+> You need to obtain an API token from the Clash Royale API.  
 > https://developer.clashroyale.com
 
-## モデル
+## Models
 
 ```go
 import "github.com/clagon/crgo/model"
@@ -37,9 +37,9 @@ import "github.com/clagon/crgo/model"
 var player *model.Player
 ```
 
-APIレスポンスの型は `model` パッケージに定義されています。
+API response types are defined in the `model` package.
 
-## 検索とページング
+## Search and Pagination
 
 ```go
 clans, err := client.SearchClans(ctx, &crgo.SearchClansOptions{
@@ -54,9 +54,9 @@ players, err := client.GetPlayerRanking(ctx, "global", &crgo.PaginationOptions{
 })
 ```
 
-任意引数を指定しない場合は `nil` を渡せます。
+Pass `nil` when no optional parameters are needed.
 
-## APIエラー
+## API Errors
 
 ```go
 var apiErr *crgo.APIError
@@ -65,10 +65,10 @@ if errors.As(err, &apiErr) {
 }
 ```
 
-非2xxレスポンスは `*crgo.APIError` として返されます。  
-429や5xxに対する自動リトライは行いません。
+Non-2xx responses are returned as `*crgo.APIError`.  
+The client does not automatically retry 429 or 5xx responses.
 
-## クライアント設定
+## Client Configuration
 
 ```go
 client, err := crgo.NewClient(token,
@@ -78,17 +78,17 @@ client, err := crgo.NewClient(token,
 )
 ```
 
-初期化時にAPIのBase URLなどを指定して差し替えることができます。
+You can override settings such as the API base URL when initializing the client.
 
-## 開発
+## Development
 
 ```sh
 go test ./...
 go vet ./...
 ```
 
-実APIへ接続するintegration testは、通常のテストでは実行されません。  
-実行する場合は、有効なAPIトークンを設定して `integration` ビルドタグを指定します。
+Integration tests that connect to the live API are not run as part of the regular test suite.  
+To run them, set a valid API token and specify the `integration` build tag.
 
 ```sh
 CLASH_ROYALE_API_TOKEN=... go test -tags=integration ./...
