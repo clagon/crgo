@@ -1,6 +1,10 @@
 package model
 
-type PlayerPathOfLegendRankingList []PlayerPathOfLegendRanking
+// PlayerPathOfLegendRankingList is a paginated Path of Legend ranking response.
+type PlayerPathOfLegendRankingList struct {
+	Items  []PlayerPathOfLegendRanking `json:"items,omitempty"`
+	Paging Paging                      `json:"paging,omitempty"`
+}
 
 type PlayerPathOfLegendRanking struct {
 	Clan      PlayerRankingClan `json:"clan,omitempty"`
@@ -18,13 +22,21 @@ type PlayerRankingClan struct {
 	BadgeUrls map[string]any `json:"badgeUrls,omitempty"`
 }
 
-type LeagueSeasonList []LeagueSeason
+// LeagueSeasonList is a paginated league season response.
+type LeagueSeasonList struct {
+	Items  []LeagueSeason `json:"items,omitempty"`
+	Paging Paging         `json:"paging,omitempty"`
+}
 
 type LeagueSeason struct {
 	Id string `json:"id,omitempty"`
 }
 
-type PlayerRankingList []PlayerRanking
+// PlayerRankingList is a paginated player ranking response.
+type PlayerRankingList struct {
+	Items  []PlayerRanking `json:"items,omitempty"`
+	Paging Paging          `json:"paging,omitempty"`
+}
 
 type PlayerRanking struct {
 	Clan         PlayerRankingClan `json:"clan,omitempty"`
@@ -37,7 +49,11 @@ type PlayerRanking struct {
 	Trophies     int               `json:"trophies,omitempty"`
 }
 
-type ClanRankingList []ClanRanking
+// ClanRankingList is a paginated clan ranking response.
+type ClanRankingList struct {
+	Items  []ClanRanking `json:"items,omitempty"`
+	Paging Paging        `json:"paging,omitempty"`
+}
 
 type ClanRanking struct {
 	ClanScore    int            `json:"clanScore,omitempty"`

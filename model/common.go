@@ -8,6 +8,17 @@ type Version struct {
 
 type JsonNode map[string]any
 
+// Paging contains cursors for a paginated API response.
+type Paging struct {
+	Cursors PagingCursors `json:"cursors,omitempty"`
+}
+
+// PagingCursors contains cursors before and after the current page.
+type PagingCursors struct {
+	After  string `json:"after,omitempty"`
+	Before string `json:"before,omitempty"`
+}
+
 // List represents the untyped list referenced by Fingerprint.files in the
 // upstream Swagger document. The document does not define this schema.
 type List []any
@@ -52,7 +63,7 @@ type IntegerList []int
 
 type Integer map[string]any
 
-type Float map[string]any
+type Float float64
 
 type TrailEventList []TrailEvent
 

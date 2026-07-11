@@ -26,3 +26,25 @@ func TestJsonLocalizedNameDecodesString(t *testing.T) {
 		})
 	}
 }
+
+func TestFloatDecodesNumber(t *testing.T) {
+	tests := []struct {
+		name string
+		body string
+		want Float
+	}{
+		{name: "decimal", body: `1.5`, want: 1.5},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			var value Float
+			if err := json.Unmarshal([]byte(tt.body), &value); err != nil {
+				t.Fatal(err)
+			}
+			if value != tt.want {
+				t.Fatalf("value: got %v, want %v", value, tt.want)
+			}
+		})
+	}
+}

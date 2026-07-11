@@ -199,7 +199,7 @@ GetClanMembers
 		クランメンバー一覧
 		error
 */
-func (c *Client) GetClanMembers(ctx context.Context, clanTag string, options *PaginationOptions) (*model.ClanMemberList, error) {
+func (c *Client) GetClanMembers(ctx context.Context, clanTag string, options *PaginationOptions) (*model.ClanMemberPage, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -211,7 +211,7 @@ func (c *Client) GetClanMembers(ctx context.Context, clanTag string, options *Pa
 	}
 
 	// レスポンス用構造体
-	var result model.ClanMemberList
+	var result model.ClanMemberPage
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/members", query, &result); err != nil {

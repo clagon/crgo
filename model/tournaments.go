@@ -12,7 +12,11 @@ type LadderTournamentRanking struct {
 	PreviousRank int               `json:"previousRank,omitempty"`
 }
 
-type LadderTournamentList []LadderTournament
+// LadderTournamentList is a paginated global tournament response.
+type LadderTournamentList struct {
+	Items  []LadderTournament `json:"items,omitempty"`
+	Paging Paging             `json:"paging,omitempty"`
+}
 
 type LadderTournament struct {
 	GameMode         GameMode                    `json:"gameMode,omitempty"`
@@ -119,7 +123,11 @@ type TournamentMember struct {
 	Score        int        `json:"score,omitempty"`
 }
 
-type TournamentHeaderList []TournamentHeader
+// TournamentHeaderList is a paginated tournament search response.
+type TournamentHeaderList struct {
+	Items  []TournamentHeader `json:"items,omitempty"`
+	Paging Paging             `json:"paging,omitempty"`
+}
 
 type TournamentHeader struct {
 	GameMode            GameMode               `json:"gameMode,omitempty"`

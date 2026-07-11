@@ -2,6 +2,12 @@ package model
 
 type ClanMemberList []ClanMember
 
+// ClanMemberPage is a paginated clan member response.
+type ClanMemberPage struct {
+	Items  ClanMemberList `json:"items,omitempty"`
+	Paging Paging         `json:"paging,omitempty"`
+}
+
 type ClanMember struct {
 	Arena             Arena          `json:"arena,omitempty"`
 	ClanChestPoints   int            `json:"clanChestPoints,omitempty"`
@@ -110,7 +116,11 @@ type ClanWarParticipant struct {
 	NumberOfBattles            int    `json:"numberOfBattles,omitempty"`
 }
 
-type ClanList []Clan
+// ClanList is a paginated clan search response.
+type ClanList struct {
+	Items  []Clan `json:"items,omitempty"`
+	Paging Paging `json:"paging,omitempty"`
+}
 
 type ClanWarLog []ClanWarLogEntry
 
