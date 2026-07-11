@@ -6,15 +6,37 @@ import (
 	"strconv"
 )
 
+/*
+GetClanWarLog
+
+	  指定したクランのクラン対戦ログを取得する。
+	  params
+		ctx: context.Context
+		clanTag: クランタグ
+		options: ページネーションオプション
+	  return
+		クラン対戦ログ
+		error
+*/
 func (c *Client) GetClanWarLog(ctx context.Context, clanTag string, options *PaginationOptions) (*ClanWarLog, error) {
+
+	// クエリパラメータ初期化
 	query := make(url.Values)
+
+	// ページネーションオプションが指定されている場合
 	if options != nil {
+		// クエリパラメータに追加
 		addPagination(query, *options)
 	}
+
+	// レスポンス用構造体
 	var result ClanWarLog
+
+	// APIリクエストを送信
 	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/warlog", query, &result); err != nil {
 		return nil, err
 	}
+
 	return &result, nil
 }
 
@@ -27,9 +49,31 @@ type SearchClansOptions struct {
 	Pagination PaginationOptions
 }
 
+/*
+SearchClans
+
+	  名前や各種条件でクランを検索する。
+	  params
+		ctx: context.Context
+		options: 検索オプション
+			name: クラン名の一部
+			locationId: クランのロケーションID
+			minMembers: クランのメンバー数の最小値
+			maxMembers: クランのメンバー数の最大値
+			minScore: クランスコアの最小値
+			pagination: ページネーションオプション
+	  return
+		クラン一覧
+		error
+*/
 func (c *Client) SearchClans(ctx context.Context, options *SearchClansOptions) (*ClanList, error) {
+
+	// クエリパラメータ初期化
 	query := make(url.Values)
+
+	// 検索オプションが指定されている場合
 	if options != nil {
+		// クエリパラメータに追加
 		if options.Name != "" {
 			query.Set("name", options.Name)
 		}
@@ -47,60 +91,154 @@ func (c *Client) SearchClans(ctx context.Context, options *SearchClansOptions) (
 		}
 		addPagination(query, options.Pagination)
 	}
+
+	// レスポンス用構造体
 	var result ClanList
+
+	// APIリクエストを送信
 	if err := c.do(ctx, "/clans", query, &result); err != nil {
 		return nil, err
 	}
+
 	return &result, nil
 }
 
+/*
+GetRiverRaceWarLog
+
+	  指定したクランのリバーレースログを取得する。
+	  params
+		ctx: context.Context
+		clanTag: クランタグ
+		options: ページネーションオプション
+	  return
+		リバーレースログ
+		error
+*/
 func (c *Client) GetRiverRaceWarLog(ctx context.Context, clanTag string, options *PaginationOptions) (*RiverRaceLog, error) {
+
+	// クエリパラメータ初期化
 	query := make(url.Values)
+
+	// ページネーションオプションが指定されている場合
 	if options != nil {
+		// クエリパラメータに追加
 		addPagination(query, *options)
 	}
+
+	// レスポンス用構造体
 	var result RiverRaceLog
+
+	// APIリクエストを送信
 	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/riverracelog", query, &result); err != nil {
 		return nil, err
 	}
+
 	return &result, nil
 }
 
+/*
+GetCurrentWar
+
+	  指定したクランの現在のクラン対戦情報を取得する。
+	  params
+		ctx: context.Context
+		clanTag: クランタグ
+	  return
+		現在のクラン対戦情報
+		error
+*/
 func (c *Client) GetCurrentWar(ctx context.Context, clanTag string) (*CurrentClanWar, error) {
-	query := make(url.Values)
+
+	// レスポンス用構造体
 	var result CurrentClanWar
-	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/currentwar", query, &result); err != nil {
+
+	// APIリクエストを送信
+	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/currentwar", nil, &result); err != nil {
 		return nil, err
 	}
+
 	return &result, nil
 }
 
+/*
+GetClan
+
+	  指定したクランのクラン情報を取得する。
+	  params
+		ctx: context.Context
+		clanTag: クランタグ
+	  return
+		クラン情報
+		error
+*/
 func (c *Client) GetClan(ctx context.Context, clanTag string) (*Clan, error) {
-	query := make(url.Values)
+
+	// レスポンス用構造体
 	var result Clan
-	if err := c.do(ctx, "/clans/"+escapedPath(clanTag), query, &result); err != nil {
+
+	// APIリクエストを送信
+	if err := c.do(ctx, "/clans/"+escapedPath(clanTag), nil, &result); err != nil {
 		return nil, err
 	}
+
 	return &result, nil
 }
 
+/*
+GetClanMembers
+
+	  指定したクランのメンバー一覧を取得する。
+	  params
+		ctx: context.Context
+		clanTag: クランタグ
+		options: ページネーションオプション
+	  return
+		クランメンバー一覧
+		error
+*/
 func (c *Client) GetClanMembers(ctx context.Context, clanTag string, options *PaginationOptions) (*ClanMemberList, error) {
+
+	// クエリパラメータ初期化
 	query := make(url.Values)
+
+	// ページネーションオプションが指定されている場合
 	if options != nil {
+		// クエリパラメータに追加
 		addPagination(query, *options)
 	}
+
+	// レスポンス用構造体
 	var result ClanMemberList
+
+	// APIリクエストを送信
 	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/members", query, &result); err != nil {
 		return nil, err
 	}
+
 	return &result, nil
 }
 
+/*
+GetCurrentRiverRace
+
+	  指定したクランの現在のリバーレース情報を取得する。
+	  params
+		ctx: context.Context
+		clanTag: クランタグ
+	  return
+		現在のリバーレース情報
+		error
+*/
 func (c *Client) GetCurrentRiverRace(ctx context.Context, clanTag string) (*CurrentRiverRace, error) {
-	query := make(url.Values)
+
+	// レスポンス用構造体
 	var result CurrentRiverRace
-	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/currentriverrace", query, &result); err != nil {
+
+	// APIリクエストを送信
+	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/currentriverrace", nil, &result); err != nil {
 		return nil, err
 	}
+
 	return &result, nil
 }

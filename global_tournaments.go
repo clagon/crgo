@@ -2,14 +2,27 @@ package crgo
 
 import (
 	"context"
-	"net/url"
 )
 
+/*
+GetGlobalTournaments
+
+	  グローバル大会一覧を取得する。
+	  params
+		ctx: context.Context
+	  return
+		グローバル大会一覧
+		error
+*/
 func (c *Client) GetGlobalTournaments(ctx context.Context) (*LadderTournamentList, error) {
-	query := make(url.Values)
+
+	// レスポンス用構造体
 	var result LadderTournamentList
-	if err := c.do(ctx, "/globaltournaments", query, &result); err != nil {
+
+	// APIリクエストを送信
+	if err := c.do(ctx, "/globaltournaments", nil, &result); err != nil {
 		return nil, err
 	}
+
 	return &result, nil
 }

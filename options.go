@@ -10,6 +10,15 @@ import (
 // ClientOption configures a Client.
 type ClientOption func(*Client) error
 
+/*
+WithBaseURL
+
+	  APIのベースURLを指定する。
+	  params
+		rawURL: APIのベースURL
+	  return
+		ClientOption
+*/
 func WithBaseURL(rawURL string) ClientOption {
 	return func(c *Client) error {
 		u, err := url.Parse(rawURL)
@@ -26,6 +35,15 @@ func WithBaseURL(rawURL string) ClientOption {
 	}
 }
 
+/*
+WithHTTPClient
+
+	  HTTPクライアントを指定する。
+	  params
+		client: HTTPクライアント
+	  return
+		ClientOption
+*/
 func WithHTTPClient(client *http.Client) ClientOption {
 	return func(c *Client) error {
 		if client == nil {
@@ -36,6 +54,15 @@ func WithHTTPClient(client *http.Client) ClientOption {
 	}
 }
 
+/*
+WithUserAgent
+
+	  User-Agentを指定する。
+	  params
+		userAgent: User-Agent
+	  return
+		ClientOption
+*/
 func WithUserAgent(userAgent string) ClientOption {
 	return func(c *Client) error { c.userAgent = strings.TrimSpace(userAgent); return nil }
 }
