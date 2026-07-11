@@ -26,7 +26,7 @@ fmt.Println(player.Name)
 ```
 
 > [!NOTE]
-> You need to obtain an API token from the Clash Royale API.
+> You need to obtain an API token from the Clash Royale API.  
 > https://developer.clashroyale.com
 
 ## Models
@@ -87,7 +87,7 @@ go test ./...
 go vet ./...
 ```
 
-Integration tests that connect to the live API are not run as part of the regular test suite.
+Integration tests that connect to the live API are not run as part of the regular test suite.  
 To run them, set a valid API token and specify the `integration` build tag.
 
 ```sh

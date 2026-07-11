@@ -26,7 +26,7 @@ fmt.Println(player.Name)
 ```
 
 > [!NOTE]
-> APIトークンはClashRoyaleAPIから取得する必要があります。
+> APIトークンはClashRoyaleAPIから取得する必要があります。  
 > https://developer.clashroyale.com
 
 ## モデル
@@ -87,7 +87,7 @@ go test ./...
 go vet ./...
 ```
 
-実APIへ接続するintegration testは、通常のテストでは実行されません。
+実APIへ接続するintegration testは、通常のテストでは実行されません。  
 実行する場合は、有効なAPIトークンを設定して `integration` ビルドタグを指定します。
 
 ```sh
