@@ -33,7 +33,7 @@ func (c *Client) GetPlayer(ctx context.Context, playerTag string) (*model.Player
 /*
 GetPlayerUpcomingChests
 
-	  指定したプレイヤーの宝箱情報を取得する。
+	  指定したプレイヤーが次に獲得する宝箱情報を取得する。
 	  params
 		ctx: context.Context
 		playerTag: プレイヤータグ

@@ -68,6 +68,7 @@ func WithUserAgent(userAgent string) ClientOption {
 }
 
 // PaginationOptions contains cursor pagination parameters.
+// BeforeとAfterは同時指定不可。
 type PaginationOptions struct {
 	Limit  int
 	After  string
