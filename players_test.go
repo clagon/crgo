@@ -7,6 +7,8 @@ import (
 	"net/http/httptest"
 	"os"
 	"testing"
+
+	model "github.com/clagon/crgo/model"
 )
 
 func TestGetPlayer(t *testing.T) {
@@ -42,7 +44,7 @@ func TestPlayerFixture(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	var player Player
+	var player model.Player
 	if err := json.Unmarshal(body, &player); err != nil {
 		t.Fatal(err)
 	}

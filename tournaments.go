@@ -3,6 +3,8 @@ package crgo
 import (
 	"context"
 	"net/url"
+
+	model "github.com/clagon/crgo/model"
 )
 
 type SearchTournamentsOptions struct {
@@ -21,7 +23,7 @@ SearchTournaments
 		大会一覧
 		error
 */
-func (c *Client) SearchTournaments(ctx context.Context, options *SearchTournamentsOptions) (*TournamentHeaderList, error) {
+func (c *Client) SearchTournaments(ctx context.Context, options *SearchTournamentsOptions) (*model.TournamentHeaderList, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -36,7 +38,7 @@ func (c *Client) SearchTournaments(ctx context.Context, options *SearchTournamen
 	}
 
 	// レスポンス用構造体
-	var result TournamentHeaderList
+	var result model.TournamentHeaderList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/tournaments", query, &result); err != nil {
@@ -57,10 +59,10 @@ GetTournament
 		大会情報
 		error
 */
-func (c *Client) GetTournament(ctx context.Context, tournamentTag string) (*Tournament, error) {
+func (c *Client) GetTournament(ctx context.Context, tournamentTag string) (*model.Tournament, error) {
 
 	// レスポンス用構造体
-	var result Tournament
+	var result model.Tournament
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/tournaments/"+escapedPath(tournamentTag), nil, &result); err != nil {

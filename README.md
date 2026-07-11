@@ -24,6 +24,16 @@ fmt.Println(player.Name)
 
 トークンはすべてのリクエストへ `Authorization: Bearer ...` として設定されます。ライブラリがトークンをログやエラーメッセージへ出力することはありません。
 
+## モデル
+
+APIレスポンスの型は `model` パッケージで提供します。APIメソッドの戻り値は、たとえば `*model.Player` です。
+
+```go
+import "github.com/clagon/crgo/model"
+
+var player *model.Player
+```
+
 ## 検索とページング
 
 ```go

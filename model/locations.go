@@ -1,4 +1,4 @@
-package crgo
+package model
 
 type Location struct {
 	LocalizedName string `json:"localizedName,omitempty"`

@@ -2,6 +2,8 @@ package crgo
 
 import (
 	"context"
+
+	model "github.com/clagon/crgo/model"
 )
 
 /*
@@ -15,10 +17,10 @@ GetPlayer
 		プレイヤー情報
 		error
 */
-func (c *Client) GetPlayer(ctx context.Context, playerTag string) (*Player, error) {
+func (c *Client) GetPlayer(ctx context.Context, playerTag string) (*model.Player, error) {
 
 	// レスポンス用構造体
-	var result Player
+	var result model.Player
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/players/"+escapedPath(playerTag), nil, &result); err != nil {
@@ -39,10 +41,10 @@ GetPlayerUpcomingChests
 		宝箱情報
 		error
 */
-func (c *Client) GetPlayerUpcomingChests(ctx context.Context, playerTag string) (*UpcomingChests, error) {
+func (c *Client) GetPlayerUpcomingChests(ctx context.Context, playerTag string) (*model.UpcomingChests, error) {
 
 	// レスポンス用構造体
-	var result UpcomingChests
+	var result model.UpcomingChests
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/players/"+escapedPath(playerTag)+"/upcomingchests", nil, &result); err != nil {
@@ -63,10 +65,10 @@ GetPlayerBattles
 		バトルログ情報
 		error
 */
-func (c *Client) GetPlayerBattles(ctx context.Context, playerTag string) (*BattleList, error) {
+func (c *Client) GetPlayerBattles(ctx context.Context, playerTag string) (*model.BattleList, error) {
 
 	// レスポンス用構造体
-	var result BattleList
+	var result model.BattleList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/players/"+escapedPath(playerTag)+"/battlelog", nil, &result); err != nil {

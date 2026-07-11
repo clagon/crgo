@@ -3,6 +3,8 @@ package crgo
 import (
 	"context"
 	"net/url"
+
+	model "github.com/clagon/crgo/model"
 )
 
 /*
@@ -17,7 +19,7 @@ GetLeaderboard
 		リーダーボード一覧
 		error
 */
-func (c *Client) GetLeaderboard(ctx context.Context, leaderboardId int, options *PaginationOptions) (*LeaderboardList, error) {
+func (c *Client) GetLeaderboard(ctx context.Context, leaderboardId int, options *PaginationOptions) (*model.LeaderboardList, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -29,7 +31,7 @@ func (c *Client) GetLeaderboard(ctx context.Context, leaderboardId int, options 
 	}
 
 	// レスポンス用構造体
-	var result LeaderboardList
+	var result model.LeaderboardList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/leaderboard/"+escapedPath(leaderboardId), query, &result); err != nil {
@@ -49,10 +51,10 @@ GetLeaderboards
 		リーダーボード一覧
 		error
 */
-func (c *Client) GetLeaderboards(ctx context.Context) (*LeaderboardList, error) {
+func (c *Client) GetLeaderboards(ctx context.Context) (*model.LeaderboardList, error) {
 
 	// レスポンス用構造体
-	var result LeaderboardList
+	var result model.LeaderboardList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/leaderboards", nil, &result); err != nil {

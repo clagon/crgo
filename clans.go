@@ -4,6 +4,8 @@ import (
 	"context"
 	"net/url"
 	"strconv"
+
+	model "github.com/clagon/crgo/model"
 )
 
 /*
@@ -18,7 +20,7 @@ GetClanWarLog
 		クラン対戦ログ
 		error
 */
-func (c *Client) GetClanWarLog(ctx context.Context, clanTag string, options *PaginationOptions) (*ClanWarLog, error) {
+func (c *Client) GetClanWarLog(ctx context.Context, clanTag string, options *PaginationOptions) (*model.ClanWarLog, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -30,7 +32,7 @@ func (c *Client) GetClanWarLog(ctx context.Context, clanTag string, options *Pag
 	}
 
 	// レスポンス用構造体
-	var result ClanWarLog
+	var result model.ClanWarLog
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/warlog", query, &result); err != nil {
@@ -66,7 +68,7 @@ SearchClans
 		クラン一覧
 		error
 */
-func (c *Client) SearchClans(ctx context.Context, options *SearchClansOptions) (*ClanList, error) {
+func (c *Client) SearchClans(ctx context.Context, options *SearchClansOptions) (*model.ClanList, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -93,7 +95,7 @@ func (c *Client) SearchClans(ctx context.Context, options *SearchClansOptions) (
 	}
 
 	// レスポンス用構造体
-	var result ClanList
+	var result model.ClanList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/clans", query, &result); err != nil {
@@ -115,7 +117,7 @@ GetRiverRaceWarLog
 		リバーレースログ
 		error
 */
-func (c *Client) GetRiverRaceWarLog(ctx context.Context, clanTag string, options *PaginationOptions) (*RiverRaceLog, error) {
+func (c *Client) GetRiverRaceWarLog(ctx context.Context, clanTag string, options *PaginationOptions) (*model.RiverRaceLog, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -127,7 +129,7 @@ func (c *Client) GetRiverRaceWarLog(ctx context.Context, clanTag string, options
 	}
 
 	// レスポンス用構造体
-	var result RiverRaceLog
+	var result model.RiverRaceLog
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/riverracelog", query, &result); err != nil {
@@ -148,10 +150,10 @@ GetCurrentWar
 		現在のクラン対戦情報
 		error
 */
-func (c *Client) GetCurrentWar(ctx context.Context, clanTag string) (*CurrentClanWar, error) {
+func (c *Client) GetCurrentWar(ctx context.Context, clanTag string) (*model.CurrentClanWar, error) {
 
 	// レスポンス用構造体
-	var result CurrentClanWar
+	var result model.CurrentClanWar
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/currentwar", nil, &result); err != nil {
@@ -172,10 +174,10 @@ GetClan
 		クラン情報
 		error
 */
-func (c *Client) GetClan(ctx context.Context, clanTag string) (*Clan, error) {
+func (c *Client) GetClan(ctx context.Context, clanTag string) (*model.Clan, error) {
 
 	// レスポンス用構造体
-	var result Clan
+	var result model.Clan
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/clans/"+escapedPath(clanTag), nil, &result); err != nil {
@@ -197,7 +199,7 @@ GetClanMembers
 		クランメンバー一覧
 		error
 */
-func (c *Client) GetClanMembers(ctx context.Context, clanTag string, options *PaginationOptions) (*ClanMemberList, error) {
+func (c *Client) GetClanMembers(ctx context.Context, clanTag string, options *PaginationOptions) (*model.ClanMemberList, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -209,7 +211,7 @@ func (c *Client) GetClanMembers(ctx context.Context, clanTag string, options *Pa
 	}
 
 	// レスポンス用構造体
-	var result ClanMemberList
+	var result model.ClanMemberList
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/members", query, &result); err != nil {
@@ -230,10 +232,10 @@ GetCurrentRiverRace
 		現在のリバーレース情報
 		error
 */
-func (c *Client) GetCurrentRiverRace(ctx context.Context, clanTag string) (*CurrentRiverRace, error) {
+func (c *Client) GetCurrentRiverRace(ctx context.Context, clanTag string) (*model.CurrentRiverRace, error) {
 
 	// レスポンス用構造体
-	var result CurrentRiverRace
+	var result model.CurrentRiverRace
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/currentriverrace", nil, &result); err != nil {
