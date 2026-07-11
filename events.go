@@ -2,14 +2,17 @@ package crgo
 
 import (
 	"context"
-	"net/url"
 )
 
 func (c *Client) GetTrailEvents(ctx context.Context) (*TrailEventList, error) {
-	query := make(url.Values)
+
+	// レスポンス用構造体
 	var result TrailEventList
-	if err := c.do(ctx, "/events", query, &result); err != nil {
+
+	// APIリクエストを送信
+	if err := c.do(ctx, "/events", nil, &result); err != nil {
 		return nil, err
 	}
+
 	return &result, nil
 }
