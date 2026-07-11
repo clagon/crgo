@@ -1,5 +1,4 @@
 # crgo
-
 Clash Royale APIのGoクライアントです。
 
 ## インストール
