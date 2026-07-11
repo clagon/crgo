@@ -32,7 +32,7 @@ func TestSearchClansOptions(t *testing.T) {
 						t.Errorf("%s: got %q, want %q", key, got, want)
 					}
 				}
-				_, _ = w.Write([]byte(`[]`))
+				_, _ = w.Write([]byte(`{"items":[]}`))
 			}))
 			defer server.Close()
 			client, err := NewClient("secret", WithBaseURL(server.URL))

@@ -11,14 +11,17 @@ import (
 /*
 GetClanWarLog
 
-	  指定したクランのクラン対戦ログを取得する。
-	  params
+	クラン対戦1向け。クラン対戦2はGetRiverRaceLogを使用する。
+	指定したクランのクラン対戦ログを取得する。
+	params
 		ctx: context.Context
 		clanTag: クランタグ
 		options: ページネーションオプション
-	  return
+	return
 		クラン対戦ログ
 		error
+
+Deprecated: APIが "This API endpoint has been temporarily disabled, possibilities to bring it back are being investigated." を返す。クラン対戦2はGetRiverRaceLogを使用する。
 */
 func (c *Client) GetClanWarLog(ctx context.Context, clanTag string, options *PaginationOptions) (*model.ClanWarLog, error) {
 
@@ -55,6 +58,7 @@ type SearchClansOptions struct {
 SearchClans
 
 	  名前や各種条件でクランを検索する。
+	  nameは最低3文字以上で指定する。
 	  params
 		ctx: context.Context
 		options: 検索オプション
@@ -106,7 +110,7 @@ func (c *Client) SearchClans(ctx context.Context, options *SearchClansOptions) (
 }
 
 /*
-GetRiverRaceWarLog
+GetRiverRaceLog
 
 	  指定したクランのリバーレースログを取得する。
 	  params
@@ -117,7 +121,7 @@ GetRiverRaceWarLog
 		リバーレースログ
 		error
 */
-func (c *Client) GetRiverRaceWarLog(ctx context.Context, clanTag string, options *PaginationOptions) (*model.RiverRaceLog, error) {
+func (c *Client) GetRiverRaceLog(ctx context.Context, clanTag string, options *PaginationOptions) (*model.RiverRaceLog, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -142,6 +146,7 @@ func (c *Client) GetRiverRaceWarLog(ctx context.Context, clanTag string, options
 /*
 GetCurrentWar
 
+	  クラン対戦1向け。クラン対戦2はGetCurrentRiverRaceを使用する。
 	  指定したクランの現在のクラン対戦情報を取得する。
 	  params
 		ctx: context.Context
@@ -149,6 +154,8 @@ GetCurrentWar
 	  return
 		現在のクラン対戦情報
 		error
+
+Deprecated: APIが "This API endpoint has been permanently removed." を返す。クラン対戦2はGetCurrentRiverRaceを使用する。
 */
 func (c *Client) GetCurrentWar(ctx context.Context, clanTag string) (*model.CurrentClanWar, error) {
 
@@ -199,7 +206,7 @@ GetClanMembers
 		クランメンバー一覧
 		error
 */
-func (c *Client) GetClanMembers(ctx context.Context, clanTag string, options *PaginationOptions) (*model.ClanMemberList, error) {
+func (c *Client) GetClanMembers(ctx context.Context, clanTag string, options *PaginationOptions) (*model.ClanMemberPage, error) {
 
 	// クエリパラメータ初期化
 	query := make(url.Values)
@@ -211,7 +218,7 @@ func (c *Client) GetClanMembers(ctx context.Context, clanTag string, options *Pa
 	}
 
 	// レスポンス用構造体
-	var result model.ClanMemberList
+	var result model.ClanMemberPage
 
 	// APIリクエストを送信
 	if err := c.do(ctx, "/clans/"+escapedPath(clanTag)+"/members", query, &result); err != nil {

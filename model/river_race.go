@@ -81,7 +81,11 @@ type RiverRaceParticipant struct {
 	DecksUsedToday int    `json:"decksUsedToday,omitempty"`
 }
 
-type RiverRaceLog []RiverRaceLogEntry
+// RiverRaceLog is a paginated river race log response.
+type RiverRaceLog struct {
+	Items  []RiverRaceLogEntry `json:"items,omitempty"`
+	Paging Paging              `json:"paging,omitempty"`
+}
 
 type RiverRaceLogEntry struct {
 	Standings    RiverRaceStandingList `json:"standings,omitempty"`

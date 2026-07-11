@@ -8,4 +8,8 @@ type Location struct {
 	CountryCode   string `json:"countryCode,omitempty"`
 }
 
-type LocationList []Location
+// LocationList is a paginated location response.
+type LocationList struct {
+	Items  []Location `json:"items,omitempty"`
+	Paging Paging     `json:"paging,omitempty"`
+}

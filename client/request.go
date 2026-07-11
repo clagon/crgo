@@ -20,8 +20,8 @@ do
 	params
 		ctx: context.Context
 		path: APIパス
-		query: JSONのデコード先。json.Unmarshalが受け付けるポインタを指定する。
-		result: デコード対象の構造体ポインタ
+		query: クエリパラメータ
+		result: JSONのデコード先。json.Unmarshalが受け付けるポインタを指定する。
 	return
 		error
 */
