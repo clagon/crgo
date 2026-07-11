@@ -1,15 +1,15 @@
 package model
 
 type CurrentRiverRace struct {
-	State             CurrentRiverRaceState      `json:"state,omitempty"`
-	Clan              RiverRaceClan              `json:"clan,omitempty"`
-	Clans             RiverRaceClanList          `json:"clans,omitempty"`
-	CollectionEndTime string                     `json:"collectionEndTime,omitempty"`
-	WarEndTime        string                     `json:"warEndTime,omitempty"`
-	SectionIndex      int                        `json:"sectionIndex,omitempty"`
-	PeriodIndex       int                        `json:"periodIndex,omitempty"`
-	PeriodType        CurrentRiverRacePeriodType `json:"periodType,omitempty"`
-	PeriodLogs        PeriodLogList              `json:"periodLogs,omitempty"`
+	State             CurrentRiverRaceState      `json:"state"`
+	Clan              RiverRaceClan              `json:"clan"`
+	Clans             RiverRaceClanList          `json:"clans"`
+	CollectionEndTime string                     `json:"collectionEndTime"`
+	WarEndTime        string                     `json:"warEndTime"`
+	SectionIndex      int                        `json:"sectionIndex"`
+	PeriodIndex       int                        `json:"periodIndex"`
+	PeriodType        CurrentRiverRacePeriodType `json:"periodType"`
+	PeriodLogs        PeriodLogList              `json:"periodLogs"`
 }
 
 type CurrentRiverRaceState string
@@ -34,70 +34,70 @@ const (
 type PeriodLogList []PeriodLog
 
 type PeriodLog struct {
-	Items       PeriodLogEntryList `json:"items,omitempty"`
-	PeriodIndex int                `json:"periodIndex,omitempty"`
+	Items       PeriodLogEntryList `json:"items"`
+	PeriodIndex int                `json:"periodIndex"`
 }
 
 type PeriodLogEntryList []PeriodLogEntry
 
 type PeriodLogEntry struct {
-	Clan                       PeriodLogEntryClan `json:"clan,omitempty"`
-	PointsEarned               int                `json:"pointsEarned,omitempty"`
-	ProgressStartOfDay         int                `json:"progressStartOfDay,omitempty"`
-	ProgressEndOfDay           int                `json:"progressEndOfDay,omitempty"`
-	EndOfDayRank               int                `json:"endOfDayRank,omitempty"`
-	ProgressEarned             int                `json:"progressEarned,omitempty"`
-	NumOfDefensesRemaining     int                `json:"numOfDefensesRemaining,omitempty"`
-	ProgressEarnedFromDefenses int                `json:"progressEarnedFromDefenses,omitempty"`
+	Clan                       PeriodLogEntryClan `json:"clan"`
+	PointsEarned               int                `json:"pointsEarned"`
+	ProgressStartOfDay         int                `json:"progressStartOfDay"`
+	ProgressEndOfDay           int                `json:"progressEndOfDay"`
+	EndOfDayRank               int                `json:"endOfDayRank"`
+	ProgressEarned             int                `json:"progressEarned"`
+	NumOfDefensesRemaining     int                `json:"numOfDefensesRemaining"`
+	ProgressEarnedFromDefenses int                `json:"progressEarnedFromDefenses"`
 }
 
 type PeriodLogEntryClan struct {
-	Tag string `json:"tag,omitempty"`
+	Tag string `json:"tag"`
 }
 
 type RiverRaceClanList []RiverRaceClan
 
 type RiverRaceClan struct {
-	Tag          string                   `json:"tag,omitempty"`
-	ClanScore    int                      `json:"clanScore,omitempty"`
-	BadgeId      int                      `json:"badgeId,omitempty"`
-	Name         string                   `json:"name,omitempty"`
-	Fame         int                      `json:"fame,omitempty"`
-	RepairPoints int                      `json:"repairPoints,omitempty"`
-	FinishTime   string                   `json:"finishTime,omitempty"`
-	Participants RiverRaceParticipantList `json:"participants,omitempty"`
-	PeriodPoints int                      `json:"periodPoints,omitempty"`
+	Tag          string                   `json:"tag"`
+	ClanScore    int                      `json:"clanScore"`
+	BadgeId      int                      `json:"badgeId"`
+	Name         string                   `json:"name"`
+	Fame         int                      `json:"fame"`
+	RepairPoints int                      `json:"repairPoints"`
+	FinishTime   string                   `json:"finishTime"`
+	Participants RiverRaceParticipantList `json:"participants"`
+	PeriodPoints int                      `json:"periodPoints"`
 }
 
 type RiverRaceParticipantList []RiverRaceParticipant
 
 type RiverRaceParticipant struct {
-	Tag            string `json:"tag,omitempty"`
-	Name           string `json:"name,omitempty"`
-	Fame           int    `json:"fame,omitempty"`
-	RepairPoints   int    `json:"repairPoints,omitempty"`
-	BoatAttacks    int    `json:"boatAttacks,omitempty"`
-	DecksUsed      int    `json:"decksUsed,omitempty"`
-	DecksUsedToday int    `json:"decksUsedToday,omitempty"`
+	Tag            string `json:"tag"`
+	Name           string `json:"name"`
+	Fame           int    `json:"fame"`
+	RepairPoints   int    `json:"repairPoints"`
+	BoatAttacks    int    `json:"boatAttacks"`
+	DecksUsed      int    `json:"decksUsed"`
+	DecksUsedToday int    `json:"decksUsedToday"`
 }
 
 // RiverRaceLog is a paginated river race log response.
 type RiverRaceLog struct {
-	Items  []RiverRaceLogEntry `json:"items,omitempty"`
-	Paging Paging              `json:"paging,omitempty"`
+	Items  []RiverRaceLogEntry `json:"items"`
+	Paging Paging              `json:"paging"`
 }
 
 type RiverRaceLogEntry struct {
-	Standings    RiverRaceStandingList `json:"standings,omitempty"`
-	SeasonId     int                   `json:"seasonId,omitempty"`
-	CreatedDate  string                `json:"createdDate,omitempty"`
-	SectionIndex int                   `json:"sectionIndex,omitempty"`
+	Standings    RiverRaceStandingList `json:"standings"`
+	SeasonId     int                   `json:"seasonId"`
+	CreatedDate  string                `json:"createdDate"`
+	SectionIndex int                   `json:"sectionIndex"`
 }
 
 type RiverRaceStandingList []RiverRaceStanding
 
 type RiverRaceStanding struct {
-	Rank         int           `json:"rank,omitempty"`
-	TrophyChange int           `json:"trophyChange,omitempty"`
-	Clan         RiverRaceClan `json:"clan,omitempty"`
+	Rank         int           `json:"rank"`
+	TrophyChange int           `json:"trophyChange"`
+	Clan         RiverRaceClan `json:"clan"`
 }

@@ -1,21 +1,21 @@
 package model
 
 type Replay struct {
-	ReplayInfo string   `json:"replayInfo,omitempty"`
-	ReplayData JsonNode `json:"replayData,omitempty"`
-	Version    Version  `json:"version,omitempty"`
-	Tag        string   `json:"tag,omitempty"`
-	BattleTime string   `json:"battleTime,omitempty"`
-	ViewCount  int      `json:"viewCount,omitempty"`
-	ShareCount int      `json:"shareCount,omitempty"`
+	ReplayInfo string   `json:"replayInfo"`
+	ReplayData JsonNode `json:"replayData"`
+	Version    Version  `json:"version"`
+	Tag        string   `json:"tag"`
+	BattleTime string   `json:"battleTime"`
+	ViewCount  int      `json:"viewCount"`
+	ShareCount int      `json:"shareCount"`
 }
 
 type Match struct {
-	Invites   map[string]any `json:"invites,omitempty"`
-	StartTime string         `json:"startTime,omitempty"`
-	State     MatchState     `json:"state,omitempty"`
-	Battle    Battle         `json:"battle,omitempty"`
-	Tag       string         `json:"tag,omitempty"`
+	Invites   map[string]any `json:"invites"`
+	StartTime string         `json:"startTime"`
+	State     MatchState     `json:"state"`
+	Battle    Battle         `json:"battle"`
+	Tag       string         `json:"tag"`
 }
 
 type MatchState string
@@ -30,27 +30,27 @@ const (
 )
 
 type Battle struct {
-	GameMode                GameMode                `json:"gameMode,omitempty"`
-	Arena                   Arena                   `json:"arena,omitempty"`
-	Type                    BattleType              `json:"type,omitempty"`
-	DeckSelection           BattleDeckSelection     `json:"deckSelection,omitempty"`
-	Team                    PlayerBattleDataList    `json:"team,omitempty"`
-	Opponent                PlayerBattleDataList    `json:"opponent,omitempty"`
-	ChallengeWinCountBefore int                     `json:"challengeWinCountBefore,omitempty"`
-	BoatBattleSide          string                  `json:"boatBattleSide,omitempty"`
-	BoatBattleWon           bool                    `json:"boatBattleWon,omitempty"`
-	NewTowersDestroyed      int                     `json:"newTowersDestroyed,omitempty"`
-	PrevTowersDestroyed     int                     `json:"prevTowersDestroyed,omitempty"`
-	RemainingTowers         int                     `json:"remainingTowers,omitempty"`
-	LeagueNumber            int                     `json:"leagueNumber,omitempty"`
-	BattleTime              string                  `json:"battleTime,omitempty"`
-	ChallengeId             int                     `json:"challengeId,omitempty"`
-	TournamentTag           string                  `json:"tournamentTag,omitempty"`
-	ChallengeTitle          string                  `json:"challengeTitle,omitempty"`
-	IsLadderTournament      bool                    `json:"isLadderTournament,omitempty"`
-	IsHostedMatch           bool                    `json:"isHostedMatch,omitempty"`
-	EventTag                string                  `json:"eventTag,omitempty"`
-	Modifiers               PlayerBattleAugmentList `json:"modifiers,omitempty"`
+	GameMode                GameMode                `json:"gameMode"`
+	Arena                   Arena                   `json:"arena"`
+	Type                    BattleType              `json:"type"`
+	DeckSelection           BattleDeckSelection     `json:"deckSelection"`
+	Team                    PlayerBattleDataList    `json:"team"`
+	Opponent                PlayerBattleDataList    `json:"opponent"`
+	ChallengeWinCountBefore int                     `json:"challengeWinCountBefore"`
+	BoatBattleSide          string                  `json:"boatBattleSide"`
+	BoatBattleWon           bool                    `json:"boatBattleWon"`
+	NewTowersDestroyed      int                     `json:"newTowersDestroyed"`
+	PrevTowersDestroyed     int                     `json:"prevTowersDestroyed"`
+	RemainingTowers         int                     `json:"remainingTowers"`
+	LeagueNumber            int                     `json:"leagueNumber"`
+	BattleTime              string                  `json:"battleTime"`
+	ChallengeId             int                     `json:"challengeId"`
+	TournamentTag           string                  `json:"tournamentTag"`
+	ChallengeTitle          string                  `json:"challengeTitle"`
+	IsLadderTournament      bool                    `json:"isLadderTournament"`
+	IsHostedMatch           bool                    `json:"isHostedMatch"`
+	EventTag                string                  `json:"eventTag"`
+	Modifiers               PlayerBattleAugmentList `json:"modifiers"`
 }
 
 type BattleType string
@@ -99,40 +99,40 @@ const (
 type PlayerBattleAugmentList []PlayerBattleAugment
 
 type PlayerBattleAugment struct {
-	Tag       string     `json:"tag,omitempty"`
-	Modifiers StringList `json:"modifiers,omitempty"`
+	Tag       string     `json:"tag"`
+	Modifiers StringList `json:"modifiers"`
 }
 
 type PlayerBattleDataList []PlayerBattleData
 
 type PlayerBattleData struct {
-	Clan                    PlayerClan            `json:"clan,omitempty"`
-	Cards                   PlayerItemLevelList   `json:"cards,omitempty"`
-	SupportCards            PlayerItemLevelList   `json:"supportCards,omitempty"`
-	GlobalRank              int                   `json:"globalRank,omitempty"`
-	Crowns                  int                   `json:"crowns,omitempty"`
-	PrincessTowersHitPoints IntegerList           `json:"princessTowersHitPoints,omitempty"`
-	ElixirLeaked            Float                 `json:"elixirLeaked,omitempty"`
-	Rounds                  PlayerBattleRoundList `json:"rounds,omitempty"`
-	Tag                     string                `json:"tag,omitempty"`
-	Name                    string                `json:"name,omitempty"`
-	StartingTrophies        int                   `json:"startingTrophies,omitempty"`
-	TrophyChange            int                   `json:"trophyChange,omitempty"`
-	KingTowerHitPoints      int                   `json:"kingTowerHitPoints,omitempty"`
+	Clan                    PlayerClan            `json:"clan"`
+	Cards                   PlayerItemLevelList   `json:"cards"`
+	SupportCards            PlayerItemLevelList   `json:"supportCards"`
+	GlobalRank              int                   `json:"globalRank"`
+	Crowns                  int                   `json:"crowns"`
+	PrincessTowersHitPoints IntegerList           `json:"princessTowersHitPoints"`
+	ElixirLeaked            Float                 `json:"elixirLeaked"`
+	Rounds                  PlayerBattleRoundList `json:"rounds"`
+	Tag                     string                `json:"tag"`
+	Name                    string                `json:"name"`
+	StartingTrophies        int                   `json:"startingTrophies"`
+	TrophyChange            int                   `json:"trophyChange"`
+	KingTowerHitPoints      int                   `json:"kingTowerHitPoints"`
 }
 
 type PlayerBattleRoundList []PlayerBattleRound
 
 type PlayerBattleRound struct {
-	Cards                   PlayerItemLevelList `json:"cards,omitempty"`
-	ElixirLeaked            Float               `json:"elixirLeaked,omitempty"`
-	Crowns                  int                 `json:"crowns,omitempty"`
-	KingTowerHitPoints      int                 `json:"kingTowerHitPoints,omitempty"`
-	PrincessTowersHitPoints IntegerList         `json:"princessTowersHitPoints,omitempty"`
+	Cards                   PlayerItemLevelList `json:"cards"`
+	ElixirLeaked            Float               `json:"elixirLeaked"`
+	Crowns                  int                 `json:"crowns"`
+	KingTowerHitPoints      int                 `json:"kingTowerHitPoints"`
+	PrincessTowersHitPoints IntegerList         `json:"princessTowersHitPoints"`
 }
 
 type CancelMatchResponse struct {
-	Success bool `json:"success,omitempty"`
+	Success bool `json:"success"`
 }
 
 type BattleList []Battle
@@ -163,5 +163,5 @@ const (
 )
 
 type RegisterMatchResponse struct {
-	Tag string `json:"tag,omitempty"`
+	Tag string `json:"tag"`
 }

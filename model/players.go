@@ -1,51 +1,51 @@
 package model
 
 type PlayerClan struct {
-	BadgeId   int            `json:"badgeId,omitempty"`
-	Tag       string         `json:"tag,omitempty"`
-	Name      string         `json:"name,omitempty"`
-	BadgeUrls map[string]any `json:"badgeUrls,omitempty"`
+	BadgeId   int            `json:"badgeId"`
+	Tag       string         `json:"tag"`
+	Name      string         `json:"name"`
+	BadgeUrls map[string]any `json:"badgeUrls"`
 }
 
 type Player struct {
-	Clan                            PlayerClan                    `json:"clan,omitempty"`
-	LegacyTrophyRoadHighScore       int                           `json:"legacyTrophyRoadHighScore,omitempty"`
-	CurrentDeck                     PlayerItemLevelList           `json:"currentDeck,omitempty"`
-	CurrentDeckSupportCards         PlayerItemLevelList           `json:"currentDeckSupportCards,omitempty"`
-	Arena                           Arena                         `json:"arena,omitempty"`
-	TotalDonations                  int                           `json:"totalDonations,omitempty"`
-	Role                            PlayerRole                    `json:"role,omitempty"`
-	Wins                            int                           `json:"wins,omitempty"`
-	Losses                          int                           `json:"losses,omitempty"`
-	LeagueStatistics                PlayerLeagueStatistics        `json:"leagueStatistics,omitempty"`
-	Cards                           PlayerItemLevelList           `json:"cards,omitempty"`
-	SupportCards                    PlayerItemLevelList           `json:"supportCards,omitempty"`
-	CurrentFavouriteCard            Item                          `json:"currentFavouriteCard,omitempty"`
-	Badges                          PlayerAchievementBadgeList    `json:"badges,omitempty"`
-	Tag                             string                        `json:"tag,omitempty"`
-	Name                            string                        `json:"name,omitempty"`
-	ExpLevel                        int                           `json:"expLevel,omitempty"`
-	Trophies                        int                           `json:"trophies,omitempty"`
-	BestTrophies                    int                           `json:"bestTrophies,omitempty"`
-	Donations                       int                           `json:"donations,omitempty"`
-	DonationsReceived               int                           `json:"donationsReceived,omitempty"`
-	Achievements                    PlayerAchievementProgressList `json:"achievements,omitempty"`
-	BattleCount                     int                           `json:"battleCount,omitempty"`
-	ThreeCrownWins                  int                           `json:"threeCrownWins,omitempty"`
-	ChallengeCardsWon               int                           `json:"challengeCardsWon,omitempty"`
-	ChallengeMaxWins                int                           `json:"challengeMaxWins,omitempty"`
-	TournamentCardsWon              int                           `json:"tournamentCardsWon,omitempty"`
-	TournamentBattleCount           int                           `json:"tournamentBattleCount,omitempty"`
-	CurrentWinLoseStreak            int                           `json:"currentWinLoseStreak,omitempty"`
-	WarDayWins                      int                           `json:"warDayWins,omitempty"`
-	ClanCardsCollected              int                           `json:"clanCardsCollected,omitempty"`
-	StarPoints                      int                           `json:"starPoints,omitempty"`
-	ExpPoints                       int                           `json:"expPoints,omitempty"`
-	TotalExpPoints                  int                           `json:"totalExpPoints,omitempty"`
-	CurrentPathOfLegendSeasonResult PathOfLegendSeasonResult      `json:"currentPathOfLegendSeasonResult,omitempty"`
-	LastPathOfLegendSeasonResult    PathOfLegendSeasonResult      `json:"lastPathOfLegendSeasonResult,omitempty"`
-	BestPathOfLegendSeasonResult    PathOfLegendSeasonResult      `json:"bestPathOfLegendSeasonResult,omitempty"`
-	Progress                        map[string]any                `json:"progress,omitempty"`
+	Clan                            PlayerClan                    `json:"clan"`
+	LegacyTrophyRoadHighScore       int                           `json:"legacyTrophyRoadHighScore"`
+	CurrentDeck                     PlayerItemLevelList           `json:"currentDeck"`
+	CurrentDeckSupportCards         PlayerItemLevelList           `json:"currentDeckSupportCards"`
+	Arena                           Arena                         `json:"arena"`
+	TotalDonations                  int                           `json:"totalDonations"`
+	Role                            PlayerRole                    `json:"role"`
+	Wins                            int                           `json:"wins"`
+	Losses                          int                           `json:"losses"`
+	LeagueStatistics                PlayerLeagueStatistics        `json:"leagueStatistics"`
+	Cards                           PlayerItemLevelList           `json:"cards"`
+	SupportCards                    PlayerItemLevelList           `json:"supportCards"`
+	CurrentFavouriteCard            Item                          `json:"currentFavouriteCard"`
+	Badges                          PlayerAchievementBadgeList    `json:"badges"`
+	Tag                             string                        `json:"tag"`
+	Name                            string                        `json:"name"`
+	ExpLevel                        int                           `json:"expLevel"`
+	Trophies                        int                           `json:"trophies"`
+	BestTrophies                    int                           `json:"bestTrophies"`
+	Donations                       int                           `json:"donations"`
+	DonationsReceived               int                           `json:"donationsReceived"`
+	Achievements                    PlayerAchievementProgressList `json:"achievements"`
+	BattleCount                     int                           `json:"battleCount"`
+	ThreeCrownWins                  int                           `json:"threeCrownWins"`
+	ChallengeCardsWon               int                           `json:"challengeCardsWon"`
+	ChallengeMaxWins                int                           `json:"challengeMaxWins"`
+	TournamentCardsWon              int                           `json:"tournamentCardsWon"`
+	TournamentBattleCount           int                           `json:"tournamentBattleCount"`
+	CurrentWinLoseStreak            int                           `json:"currentWinLoseStreak"`
+	WarDayWins                      int                           `json:"warDayWins"`
+	ClanCardsCollected              int                           `json:"clanCardsCollected"`
+	StarPoints                      int                           `json:"starPoints"`
+	ExpPoints                       int                           `json:"expPoints"`
+	TotalExpPoints                  int                           `json:"totalExpPoints"`
+	CurrentPathOfLegendSeasonResult PathOfLegendSeasonResult      `json:"currentPathOfLegendSeasonResult"`
+	LastPathOfLegendSeasonResult    PathOfLegendSeasonResult      `json:"lastPathOfLegendSeasonResult"`
+	BestPathOfLegendSeasonResult    PathOfLegendSeasonResult      `json:"bestPathOfLegendSeasonResult"`
+	Progress                        map[string]any                `json:"progress"`
 }
 
 type PlayerRole string
@@ -61,21 +61,21 @@ const (
 type PlayerAchievementProgressList []PlayerAchievementProgress
 
 type PlayerAchievementProgress struct {
-	Stars          int               `json:"stars,omitempty"`
-	Value          int               `json:"value,omitempty"`
-	Name           JsonLocalizedName `json:"name,omitempty"`
-	Target         int               `json:"target,omitempty"`
-	Info           JsonLocalizedName `json:"info,omitempty"`
-	CompletionInfo JsonLocalizedName `json:"completionInfo,omitempty"`
+	Stars          int               `json:"stars"`
+	Value          int               `json:"value"`
+	Name           JsonLocalizedName `json:"name"`
+	Target         int               `json:"target"`
+	Info           JsonLocalizedName `json:"info"`
+	CompletionInfo JsonLocalizedName `json:"completionInfo"`
 }
 
 type PlayerAchievementBadgeList []PlayerAchievementBadge
 
 type PlayerAchievementBadge struct {
-	IconUrls map[string]any `json:"iconUrls,omitempty"`
-	MaxLevel int            `json:"maxLevel,omitempty"`
-	Progress int            `json:"progress,omitempty"`
-	Level    int            `json:"level,omitempty"`
-	Target   int            `json:"target,omitempty"`
-	Name     string         `json:"name,omitempty"`
+	IconUrls map[string]any `json:"iconUrls"`
+	MaxLevel int            `json:"maxLevel"`
+	Progress int            `json:"progress"`
+	Level    int            `json:"level"`
+	Target   int            `json:"target"`
+	Name     string         `json:"name"`
 }

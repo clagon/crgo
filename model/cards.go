@@ -1,13 +1,13 @@
 package model
 
 type Item struct {
-	IconUrls          map[string]any    `json:"iconUrls,omitempty"`
-	Name              JsonLocalizedName `json:"name,omitempty"`
-	Id                int               `json:"id,omitempty"`
-	Rarity            ItemRarity        `json:"rarity,omitempty"`
-	MaxLevel          int               `json:"maxLevel,omitempty"`
-	ElixirCost        int               `json:"elixirCost,omitempty"`
-	MaxEvolutionLevel int               `json:"maxEvolutionLevel,omitempty"`
+	IconUrls          map[string]any    `json:"iconUrls"`
+	Name              JsonLocalizedName `json:"name"`
+	Id                int               `json:"id"`
+	Rarity            ItemRarity        `json:"rarity"`
+	MaxLevel          int               `json:"maxLevel"`
+	ElixirCost        *int              `json:"elixirCost"`
+	MaxEvolutionLevel int               `json:"maxEvolutionLevel"`
 }
 
 type ItemRarity string
@@ -23,18 +23,18 @@ const (
 type PlayerItemLevelList []PlayerItemLevel
 
 type PlayerItemLevel struct {
-	Id                int                   `json:"id,omitempty"`
-	Rarity            PlayerItemLevelRarity `json:"rarity,omitempty"`
-	Count             int                   `json:"count,omitempty"`
-	Level             int                   `json:"level,omitempty"`
-	StarLevel         int                   `json:"starLevel,omitempty"`
-	EvolutionLevel    int                   `json:"evolutionLevel,omitempty"`
-	Used              bool                  `json:"used,omitempty"`
-	Name              JsonLocalizedName     `json:"name,omitempty"`
-	MaxLevel          int                   `json:"maxLevel,omitempty"`
-	ElixirCost        int                   `json:"elixirCost,omitempty"`
-	MaxEvolutionLevel int                   `json:"maxEvolutionLevel,omitempty"`
-	IconUrls          map[string]any        `json:"iconUrls,omitempty"`
+	Id                int                   `json:"id"`
+	Rarity            PlayerItemLevelRarity `json:"rarity"`
+	Count             int                   `json:"count"`
+	Level             int                   `json:"level"`
+	StarLevel         int                   `json:"starLevel"`
+	EvolutionLevel    int                   `json:"evolutionLevel"`
+	Used              bool                  `json:"used"`
+	Name              JsonLocalizedName     `json:"name"`
+	MaxLevel          int                   `json:"maxLevel"`
+	ElixirCost        *int                  `json:"elixirCost"`
+	MaxEvolutionLevel int                   `json:"maxEvolutionLevel"`
+	IconUrls          map[string]any        `json:"iconUrls"`
 }
 
 type PlayerItemLevelRarity string
@@ -50,35 +50,35 @@ const (
 type EmoteList []Emote
 
 type Emote struct {
-	Name              string `json:"name,omitempty"`
-	IndexHi           int    `json:"indexHi,omitempty"`
-	IndexLo           int    `json:"indexLo,omitempty"`
-	Available         bool   `json:"available,omitempty"`
-	DefaultOwned      bool   `json:"defaultOwned,omitempty"`
-	SfxFile           string `json:"sfxFile,omitempty"`
-	ScFile            string `json:"scFile,omitempty"`
-	AvailableForOffer bool   `json:"availableForOffer,omitempty"`
-	Exclusive         bool   `json:"exclusive,omitempty"`
-	DateAvailable     string `json:"dateAvailable,omitempty"`
-	HumanReadableName string `json:"humanReadableName,omitempty"`
-	Family            string `json:"family,omitempty"`
+	Name              string `json:"name"`
+	IndexHi           int    `json:"indexHi"`
+	IndexLo           int    `json:"indexLo"`
+	Available         bool   `json:"available"`
+	DefaultOwned      bool   `json:"defaultOwned"`
+	SfxFile           string `json:"sfxFile"`
+	ScFile            string `json:"scFile"`
+	AvailableForOffer bool   `json:"availableForOffer"`
+	Exclusive         bool   `json:"exclusive"`
+	DateAvailable     string `json:"dateAvailable"`
+	HumanReadableName string `json:"humanReadableName"`
+	Family            string `json:"family"`
 }
 
 type UpcomingChests struct {
-	Items ChestList `json:"items,omitempty"`
+	Items ChestList `json:"items"`
 }
 
 type ChestList []Chest
 
 type Chest struct {
-	Name     JsonLocalizedName `json:"name,omitempty"`
-	Index    int               `json:"index,omitempty"`
-	IconUrls map[string]any    `json:"iconUrls,omitempty"`
+	Name     JsonLocalizedName `json:"name"`
+	Index    int               `json:"index"`
+	IconUrls map[string]any    `json:"iconUrls"`
 }
 
 type Items struct {
-	Items        ItemList `json:"items,omitempty"`
-	SupportItems ItemList `json:"supportItems,omitempty"`
+	Items        ItemList `json:"items"`
+	SupportItems ItemList `json:"supportItems"`
 }
 
 type ItemList []Item
