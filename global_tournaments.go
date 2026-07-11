@@ -4,6 +4,16 @@ import (
 	"context"
 )
 
+/*
+GetGlobalTournaments
+
+	  グローバル大会一覧を取得する。
+	  params
+		ctx: context.Context
+	  return
+		グローバル大会一覧
+		error
+*/
 func (c *Client) GetGlobalTournaments(ctx context.Context) (*LadderTournamentList, error) {
 
 	// レスポンス用構造体

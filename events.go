@@ -4,6 +4,16 @@ import (
 	"context"
 )
 
+/*
+GetTrailEvents
+
+	  開催中のイベント一覧を取得する。
+	  params
+		ctx: context.Context
+	  return
+		イベント一覧
+		error
+*/
 func (c *Client) GetTrailEvents(ctx context.Context) (*TrailEventList, error) {
 
 	// レスポンス用構造体

@@ -5,6 +5,17 @@ import (
 	"net/url"
 )
 
+/*
+GetCards
+
+	  カード一覧を取得する。
+	  params
+		ctx: context.Context
+		options: ページネーションオプション
+	  return
+		カード一覧
+		error
+*/
 func (c *Client) GetCards(ctx context.Context, options *PaginationOptions) (*Items, error) {
 
 	// クエリパラメータ初期化

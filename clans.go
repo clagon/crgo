@@ -6,6 +6,18 @@ import (
 	"strconv"
 )
 
+/*
+GetClanWarLog
+
+	  指定したクランのクラン対戦ログを取得する。
+	  params
+		ctx: context.Context
+		clanTag: クランタグ
+		options: ページネーションオプション
+	  return
+		クラン対戦ログ
+		error
+*/
 func (c *Client) GetClanWarLog(ctx context.Context, clanTag string, options *PaginationOptions) (*ClanWarLog, error) {
 
 	// クエリパラメータ初期化
@@ -37,6 +49,23 @@ type SearchClansOptions struct {
 	Pagination PaginationOptions
 }
 
+/*
+SearchClans
+
+	  名前や各種条件でクランを検索する。
+	  params
+		ctx: context.Context
+		options: 検索オプション
+			name: クラン名の一部
+			locationId: クランのロケーションID
+			minMembers: クランのメンバー数の最小値
+			maxMembers: クランのメンバー数の最大値
+			minScore: クランスコアの最小値
+			pagination: ページネーションオプション
+	  return
+		クラン一覧
+		error
+*/
 func (c *Client) SearchClans(ctx context.Context, options *SearchClansOptions) (*ClanList, error) {
 
 	// クエリパラメータ初期化
@@ -74,6 +103,18 @@ func (c *Client) SearchClans(ctx context.Context, options *SearchClansOptions) (
 	return &result, nil
 }
 
+/*
+GetRiverRaceWarLog
+
+	  指定したクランのリバーレースログを取得する。
+	  params
+		ctx: context.Context
+		clanTag: クランタグ
+		options: ページネーションオプション
+	  return
+		リバーレースログ
+		error
+*/
 func (c *Client) GetRiverRaceWarLog(ctx context.Context, clanTag string, options *PaginationOptions) (*RiverRaceLog, error) {
 
 	// クエリパラメータ初期化
@@ -96,6 +137,17 @@ func (c *Client) GetRiverRaceWarLog(ctx context.Context, clanTag string, options
 	return &result, nil
 }
 
+/*
+GetCurrentWar
+
+	  指定したクランの現在のクラン対戦情報を取得する。
+	  params
+		ctx: context.Context
+		clanTag: クランタグ
+	  return
+		現在のクラン対戦情報
+		error
+*/
 func (c *Client) GetCurrentWar(ctx context.Context, clanTag string) (*CurrentClanWar, error) {
 
 	// レスポンス用構造体
@@ -109,6 +161,17 @@ func (c *Client) GetCurrentWar(ctx context.Context, clanTag string) (*CurrentCla
 	return &result, nil
 }
 
+/*
+GetClan
+
+	  指定したクランのクラン情報を取得する。
+	  params
+		ctx: context.Context
+		clanTag: クランタグ
+	  return
+		クラン情報
+		error
+*/
 func (c *Client) GetClan(ctx context.Context, clanTag string) (*Clan, error) {
 
 	// レスポンス用構造体
@@ -122,6 +185,18 @@ func (c *Client) GetClan(ctx context.Context, clanTag string) (*Clan, error) {
 	return &result, nil
 }
 
+/*
+GetClanMembers
+
+	  指定したクランのメンバー一覧を取得する。
+	  params
+		ctx: context.Context
+		clanTag: クランタグ
+		options: ページネーションオプション
+	  return
+		クランメンバー一覧
+		error
+*/
 func (c *Client) GetClanMembers(ctx context.Context, clanTag string, options *PaginationOptions) (*ClanMemberList, error) {
 
 	// クエリパラメータ初期化
@@ -144,6 +219,17 @@ func (c *Client) GetClanMembers(ctx context.Context, clanTag string, options *Pa
 	return &result, nil
 }
 
+/*
+GetCurrentRiverRace
+
+	  指定したクランの現在のリバーレース情報を取得する。
+	  params
+		ctx: context.Context
+		clanTag: クランタグ
+	  return
+		現在のリバーレース情報
+		error
+*/
 func (c *Client) GetCurrentRiverRace(ctx context.Context, clanTag string) (*CurrentRiverRace, error) {
 
 	// レスポンス用構造体

@@ -5,6 +5,18 @@ import (
 	"net/url"
 )
 
+/*
+GetLeaderboard
+
+	  指定したリーダーボードのプレイヤー一覧を取得する。
+	  params
+		ctx: context.Context
+		leaderboardId: リーダーボードID
+		options: ページネーションオプション
+	  return
+		リーダーボード一覧
+		error
+*/
 func (c *Client) GetLeaderboard(ctx context.Context, leaderboardId int, options *PaginationOptions) (*LeaderboardList, error) {
 
 	// クエリパラメータ初期化
@@ -27,6 +39,16 @@ func (c *Client) GetLeaderboard(ctx context.Context, leaderboardId int, options 
 	return &result, nil
 }
 
+/*
+GetLeaderboards
+
+	  トロフィーロードごとのリーダーボード一覧を取得する。
+	  params
+		ctx: context.Context
+	  return
+		リーダーボード一覧
+		error
+*/
 func (c *Client) GetLeaderboards(ctx context.Context) (*LeaderboardList, error) {
 
 	// レスポンス用構造体
